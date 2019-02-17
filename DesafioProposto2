@@ -1,0 +1,45 @@
+using System;
+
+namespace Ex2
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			int M, N; //declaracao de variaveis do tipo inteiro
+			int[,] A; //declaracao da matriz composta por numeros inteiros
+
+			string[] s = Console.ReadLine().Split(' '); //vetor para leitura de dados na mesma linha com a condição de valores separados por "espaco"
+			M = int.Parse(s[0]); //atribui ao M o valor de s na posição 0
+			N = int.Parse(s[1]); //atribui ao N o valor de s na posição 1
+			A = new int[M, N]; //faz a matriz receber os valores de M e N
+
+			//for para percorrer as linhas, através de leitura de dados na mesma linha com a condição de valores separados por "espaco"
+			for (int i = 0; i < M; i++){
+				string[] s1 = Console.ReadLine().Split(' ');
+
+				//for para percorrer as colunas e atribuir os valores lidos pelo vetor s1
+				for (int j = 0; j<N; j++){ 
+					A[i, j] = int.Parse(s1[j]);
+				}
+			}
+
+			int[] vet = new int[M]; //declarando o vetor, instanciando com a quantidade de linhas, conforme o desafio
+
+			//for para indicar linha da matriz
+			for (int i=0; i<M; i++){
+				int soma = 0; //declarando a variavel soma
+				for (int j=0; j < N; j++){  //for para percorrer e somar os valores das colunas ref a mesma linha(sequencial-horizontal) - repetira conforme condição (j<N), quantidade de colunas.
+					soma = soma + A[i, j]; //Ex 1ª linha> A[Linha0, coluna0] || A[Linha0, coluna1] || A[Linha0; coluna2]
+				}
+				vet[i] = soma; //acessa o vetor "vet" e atribui o valor da soma
+			}
+			//impressão dos resultados no vetor
+			for (int i=0; i<M; i++){
+				Console.WriteLine(vet[i]);
+
+			}
+			Console.ReadKey();
+		}
+	}
+}
